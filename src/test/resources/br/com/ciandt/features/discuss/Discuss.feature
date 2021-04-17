@@ -1,4 +1,5 @@
 #language: pt
+@Discuss
 
 Funcionalidade: Acessar a Opção Discuss
 

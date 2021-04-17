@@ -1,4 +1,5 @@
 #language: pt
+@API
 
 Funcionalidade: Acessar a Opção API
 

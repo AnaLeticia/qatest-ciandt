@@ -14,26 +14,23 @@ public class Discuss {
 
 	private WebDriver driver;
 
-	  public Discuss(SharedWebDriver sharedWebDriver) {
-	    this.driver = sharedWebDriver.getDriver();
-	  }
+	public Discuss(SharedWebDriver sharedWebDriver) {
+		this.driver = sharedWebDriver.getDriver();
+	}
 
-	  @Quando("eu clico em {string}")
-	  public void euClicoEmDiscuss(String buttonName) {
-	    final WebElement discussButton = driver.findElement(By.xpath("//body/nav[@id='mainNav']/div[1]/div[1]/ul[1]/li[4]/a[1]"));
+	@Quando("eu clico em {string}")
+	public void euClicoEmDiscuss(String buttonName) {
+		final WebElement discussButton = driver
+				.findElement(By.xpath("//body/nav[@id='mainNav']/div[1]/div[1]/ul[1]/li[4]/a[1]"));
 
-	    assertThat(discussButton.getText()).isEqualTo(buttonName);
+		assertThat(discussButton.getText()).isEqualTo(buttonName);
 
-	    discussButton.click();
-	  }
+		discussButton.click();
+	}
 
-	  @Entao("o sistema deve me redirecionar para a página {string}")
-	  public void oSistemaDeveMeRedirecionarParaOutraPagina(String pagina) {
-	    assertThat(driver.getCurrentUrl()).isEqualTo(pagina);
-	  }
-		
-	
-	
-	
+	@Entao("o sistema deve me redirecionar para a página {string}")
+	public void oSistemaDeveMeRedirecionarParaOutraPagina(String pagina) {
+		assertThat(driver.getCurrentUrl()).isEqualTo(pagina);
+	}
+
 }
-

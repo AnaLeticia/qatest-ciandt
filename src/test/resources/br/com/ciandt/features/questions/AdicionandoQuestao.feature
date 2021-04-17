@@ -1,4 +1,5 @@
 #language: pt
+@AddNovaQuestao
 
 Funcionalidade: Adicionando Nova Questão
 

@@ -1,7 +1,9 @@
 #language: pt
+@Busca
 
 Funcionalidade: Busca no Banco de Questões
 
+@BuscaQuestão
 Esquema do Cenario: <CT> - <Descrição do cenario> 
 	Dado que navego para a página de busca do banco de questões
 	E digito 'Science: Computers' no campo de busca
@@ -14,6 +16,7 @@ Exemplos:
 
 #Precisamos fazer uma busca na categoria por Science: Computers e verificar se a listagem de questões está com 25 itens e se o controle de paginação irá aparecer.
 
+@BuscaCategoria
 Esquema do Cenario: <CT> - <Descrição do cenario> 
 	Dado que navego para a página de busca do banco de categoria
 	E digito 'Science: Computers' no campo de busca
@@ -27,6 +30,7 @@ Exemplos:
  
  # Teste por busca de usuário
  
+ @BuscaUsuario
  Esquema do Cenario: <CT> - <Descrição do cenario> 
 	Dado que navego para a página de busca do banco de usuário
 	E digito 'DrAwesome' no campo de busca

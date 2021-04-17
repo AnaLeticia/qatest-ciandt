@@ -27,4 +27,4 @@
 * Jdk 8
 * Maven 3 
 * Chrome 
-   >> Ir até a raiz do projeto,via linha de comando digitar: "maven clean verify"
+   >> Ir até a raiz do projeto,via linha de comando digitar: "mvn clean verify"

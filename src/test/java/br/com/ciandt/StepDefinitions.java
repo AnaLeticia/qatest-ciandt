@@ -32,7 +32,7 @@ public class StepDefinitions {
 		System.out.println("Visualizando a mensagem");
 	}
 
-	// Cenário Categoria 
+	// Cenário Busca por Categoria 
 	
 	@Dado("que navego para a página de busca do banco de categoria")
 	public void navegarc() {
@@ -49,7 +49,7 @@ public class StepDefinitions {
 //		System.out.println("Clicando no botão Buscar de categoria");
 //	}
 
-	@Entao("visualizo uma listagem de questões com {string} itens")
+	@Entao("verifico uma listagem de questões com {string} itens")
 	public void quantidade(String numero) {
 		System.out.println("Visualizando listagem com as quantidades de questões");
 	}
@@ -59,8 +59,29 @@ public class StepDefinitions {
 		System.out.println("controle de paginação está ativo");
 	}
 	
+	// Cenário Busca por Usuário 
 	
+		@Dado("que navego para a página de busca do banco de usuário")
+		public void navegaru() {
+			System.out.println("Abrindo o browser na pagina de busca de usuário");
+		}
 		
+		@E("digito 'DrAwesome' no campo de busca")
+		public void digitaru() {
+			System.out.println("Digitanto no campo de busca de usuário");
+		}
+
+//		@Quando("clico no botão de buscar")
+//		public void clicarc() {
+//			System.out.println("Clicando no botão Buscar de categoria");
+//		}
+
+		@Entao("visualizo uma listagem de questões com {string} itens")
+		public void quantidadeu(String numero) {
+			System.out.println("Visualizando listagem com as quantidades de questões");
+		}
+
+
 }
 	
 	

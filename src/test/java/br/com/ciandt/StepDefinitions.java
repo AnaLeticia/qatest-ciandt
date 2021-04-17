@@ -8,6 +8,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.hamcrest.Matcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -22,7 +24,9 @@ public class StepDefinitions {
 	}
 
 	WebDriver driver = new ChromeDriver();
-
+ 
+   	//Cenario Busca por Questões inexistentes
+	
 	@Dado("que navego para a página de busca do banco de questões")
 	public void navegar() {
 		System.out.println("Abrindo o browser na pagina de busca");
@@ -55,7 +59,10 @@ public class StepDefinitions {
 		driver.findElement(By.cssSelector(".container:nth-child(3)")).click();
 		assertThat(driver.findElement(By.cssSelector(".alert")).getText()).isEqualTo("No questions found.");
 		driver.findElement(By.id("page-top")).click();
+		
+		driver.close();
 	}
+	
 
 	// Cenário Busca por Categoria
 
@@ -73,15 +80,6 @@ public class StepDefinitions {
 		    }
 	}
 
-//	@E("digito 'Science: Computers' no campo de busca")
-//	public void digitarc() {
-//		System.out.println("Digitanto no campo de busca de categoria");
-//	}
-
-//	@Quando("clico no botão de buscar")
-//	public void clicarc() {
-//		System.out.println("Clicando no botão Buscar de categoria");
-//	}
 
 	@Entao("verifico uma listagem de questões com {int} itens")
 	public void quantidade(int quantidadeItensEsperados) {
@@ -97,7 +95,9 @@ public class StepDefinitions {
 	public void paginacao() {
 		System.out.println("controle de paginação está ativo");
 		
-		driver.findElement(By.cssSelector(".pagination")).isDisplayed();		
+		driver.findElement(By.cssSelector(".pagination")).isDisplayed();
+		
+		driver.close();
 	}
 
 	// Cenário Busca por Usuário
@@ -105,21 +105,43 @@ public class StepDefinitions {
 	@Dado("que navego para a página de busca do banco de usuário")
 	public void navegaru() {
 		System.out.println("Abrindo o browser na pagina de busca de usuário");
+		
+		driver.get("https://opentdb.com/");
+		driver.manage().window().setSize(new Dimension(1552, 840));
+		driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
+		driver.findElement(By.id("type")).click();
+		{
+		      WebElement dropdown = driver.findElement(By.id("type"));
+		      dropdown.findElement(By.xpath("//option[. = 'User']")).click();
+		    }
+		driver.findElement(By.id("query")).click();
+		
 	}
 
 	@E("digito 'DrAwesome' no campo de busca")
 	public void digitaru() {
 		System.out.println("Digitanto no campo de busca de usuário");
+		
+		 driver.findElement(By.id("query")).sendKeys("DrAwesome");
+		 driver.findElement(By.cssSelector(".btn")).click();
 	}
 
-//		@Quando("clico no botão de buscar")
-//		public void clicarc() {
-//			System.out.println("Clicando no botão Buscar de categoria");
-//		}
 
-	@Entao("visualizo uma listagem de questões com {string} itens")
-	public void quantidadeu(String numero) {
-		System.out.println("Visualizando listagem com as quantidades de questões");
+	@Entao("visualizo uma listagem de questões realizadas pelo usuário")
+	public void quantidadeu() {
+		System.out.println("Visualizando listagem de questões realizadas");
+		
+		driver.findElement(By.cssSelector(".table-bordered")).isDisplayed();
+		
+		{
+		      List<WebElement> elements = driver.findElements(By.cssSelector("td:nth-child(6)"));
+		      assert(elements.size() > 0);
+		    }
+	
+		
+		driver.close();
 	}
 
 }
+
+

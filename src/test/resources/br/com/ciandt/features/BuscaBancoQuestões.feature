@@ -31,8 +31,8 @@ Exemplos:
 	Dado que navego para a página de busca do banco de usuário
 	E digito 'DrAwesome' no campo de busca
 	Quando clico no botão de buscar 
-	Entao visualizo uma listagem de questões com <numero> itens
+	Entao visualizo uma listagem de questões realizadas pelo usuário
 
 Exemplos: 
-	| CT 	| Descrição do cenario 					|  numero  |
-	| 03  | Busca por Usuário 						|  2   		 |
+	| CT 	| Descrição do cenario 					|  
+	| 03  | Busca por Usuário 						|  

@@ -19,7 +19,7 @@ public class SharedWebDriver {
 
 	private WebDriver driver;
 
-	@Before
+	@Before(order = Integer.MIN_VALUE)
 	public void init() {
 		if (!startBrowser) {
 			WebDriverManager.chromedriver().setup();

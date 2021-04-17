@@ -1,4 +1,4 @@
-package br.com.ciandt.discuss;
+package br.com.ciandt.features.discuss;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,11 +10,11 @@ import br.com.ciandt.utils.SharedWebDriver;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 
-public class discuss {
+public class Discuss {
 
 	private WebDriver driver;
 
-	  public discuss(SharedWebDriver sharedWebDriver) {
+	  public Discuss(SharedWebDriver sharedWebDriver) {
 	    this.driver = sharedWebDriver.getDriver();
 	  }
 

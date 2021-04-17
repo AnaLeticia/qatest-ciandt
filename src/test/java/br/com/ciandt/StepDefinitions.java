@@ -12,6 +12,7 @@ import org.hamcrest.Matcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class StepDefinitions {
@@ -61,6 +62,15 @@ public class StepDefinitions {
 	@Dado("que navego para a página de busca do banco de categoria")
 	public void navegarc() {
 		System.out.println("Abrindo o browser na pagina de busca de categoria");
+		
+		driver.get("https://opentdb.com/");
+		driver.manage().window().setSize(new Dimension(1936, 1056));
+		driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
+		driver.findElement(By.id("type")).click();
+		 {
+		      WebElement dropdown = driver.findElement(By.id("type"));
+		      dropdown.findElement(By.xpath("//option[. = 'Category']")).click();
+		    }
 	}
 
 //	@E("digito 'Science: Computers' no campo de busca")
@@ -73,14 +83,21 @@ public class StepDefinitions {
 //		System.out.println("Clicando no botão Buscar de categoria");
 //	}
 
-	@Entao("verifico uma listagem de questões com {string} itens")
-	public void quantidade(String numero) {
+	@Entao("verifico uma listagem de questões com {int} itens")
+	public void quantidade(int quantidadeItensEsperados) {
 		System.out.println("Visualizando listagem com as quantidades de questões");
+		
+		int tableRowCount = driver.findElements(By.xpath("//table/tbody/tr")).size();
+		System.out.println("rowConunt(size)"+tableRowCount);
+		
+		assertThat(tableRowCount).isEqualTo(quantidadeItensEsperados);		
 	}
 
 	@E("verifico o controle de paginação")
 	public void paginacao() {
 		System.out.println("controle de paginação está ativo");
+		
+		driver.findElement(By.cssSelector(".pagination")).isDisplayed();		
 	}
 
 	// Cenário Busca por Usuário

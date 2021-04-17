@@ -18,7 +18,7 @@ Esquema do Cenario: <CT> - <Descrição do cenario>
 	Dado que navego para a página de busca do banco de categoria
 	E digito 'Science: Computers' no campo de busca
 	Quando clico no botão de buscar 
-	Entao verifico uma listagem de questões com "<numero>" itens
+	Entao verifico uma listagem de questões com <numero> itens
 	E verifico o controle de paginação
 
 Exemplos: 
@@ -31,7 +31,7 @@ Exemplos:
 	Dado que navego para a página de busca do banco de usuário
 	E digito 'DrAwesome' no campo de busca
 	Quando clico no botão de buscar 
-	Entao visualizo uma listagem de questões com "<numero>" itens
+	Entao visualizo uma listagem de questões com <numero> itens
 
 Exemplos: 
 	| CT 	| Descrição do cenario 					|  numero  |

@@ -8,28 +8,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import br.com.ciandt.utils.SharedWebDriver;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BuscaNoBrowse {
 
-	static {
-		WebDriverManager.chromedriver().setup();
+	WebDriver driver;
+	
+	public BuscaNoBrowse(SharedWebDriver sharedWebDriver) {
+		this.driver = sharedWebDriver.getDriver();
+		
 	}
-
-	WebDriver driver = new ChromeDriver();
 
 	// Cenario Busca por Questões inexistentes
 
 	@Dado("que navego para a página de busca do banco de questões")
 	public void navegar() {
 
-		driver.get("https://opentdb.com/");
 		driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
 		driver.findElement(By.id("query")).click();
 	}
@@ -54,7 +53,7 @@ public class BuscaNoBrowse {
 		assertThat(driver.findElement(By.cssSelector(".alert")).getText()).isEqualTo("No questions found.");
 		driver.findElement(By.id("page-top")).click();
 
-		driver.close();
+	
 	}
 
 	// Cenário Busca por Categoria
@@ -62,7 +61,6 @@ public class BuscaNoBrowse {
 	@Dado("que navego para a página de busca do banco de categoria")
 	public void navegarc() {
 
-		driver.get("https://opentdb.com/");
 		driver.manage().window().setSize(new Dimension(1936, 1056));
 		driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
 		driver.findElement(By.id("type")).click();
@@ -86,7 +84,6 @@ public class BuscaNoBrowse {
 
 		driver.findElement(By.cssSelector(".pagination")).isDisplayed();
 
-		driver.close();
 	}
 
 	// Cenário Busca por Usuário
@@ -94,7 +91,6 @@ public class BuscaNoBrowse {
 	@Dado("que navego para a página de busca do banco de usuário")
 	public void navegaru() {
 
-		driver.get("https://opentdb.com/");
 		driver.manage().window().setSize(new Dimension(1552, 840));
 		driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
 		driver.findElement(By.id("type")).click();
@@ -123,7 +119,6 @@ public class BuscaNoBrowse {
 			assert (elements.size() > 0);
 		}
 
-		driver.close();
 	}
 
 }
